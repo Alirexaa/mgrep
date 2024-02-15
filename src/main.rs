@@ -1,4 +1,4 @@
-use mgrep::Config;
+use mmgrep::Config;
 use std::{env, process};
 
 fn main() {
@@ -7,7 +7,7 @@ fn main() {
         process::exit(1);
     });
 
-    if let Err(e) = mgrep::run(config) {
+    if let Err(e) = mmgrep::run(config) {
         eprintln!("Application Error: {}", e);
         process::exit(1);
     }

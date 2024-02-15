@@ -45,7 +45,20 @@ pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
 
     Ok(())
 }
-
+///Search (case sensitive) query in given content
+///
+/// # Examples
+///
+///```
+/// use mmgrep:: search_case_insensitive;
+/// let query = "rUst";
+/// let content = "/
+///Rust:
+///safe, fast, productive.
+///Pick three.
+///Trust me.";
+/// assert_eq!(vec!["Rust:", "Trust me."], search_case_insensitive(query, content))
+/// ```
 pub fn search<'a>(query: &'a str, content: &'a str) -> Vec<&'a str> {
     content
         .lines()
@@ -53,6 +66,19 @@ pub fn search<'a>(query: &'a str, content: &'a str) -> Vec<&'a str> {
         .collect()
 }
 
+///Search (case insensitive) query in given content
+///
+/// # Examples
+///
+///```
+/// use mmgrep::search;
+/// let query = "duct";
+/// let content = "/
+///Rust:
+///safe, fast, productive.
+///Pick three.";
+/// assert_eq!(vec!["safe, fast, productive."], search(query, content))
+/// ```
 pub fn search_case_insensitive<'a>(query: &'a str, content: &'a str) -> Vec<&'a str> {
     let query = query.to_lowercase();
     let mut results = Vec::new();
